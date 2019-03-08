@@ -15,7 +15,7 @@ namespace api_agenda.Models
         {
         }
 
-        public virtual DbSet<Contatos> Contatos { get; set; }
+        public virtual DbSet<Contato> Contato { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -30,7 +30,7 @@ namespace api_agenda.Models
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.2-servicing-10034");
 
-            modelBuilder.Entity<Contatos>(entity =>
+            modelBuilder.Entity<Contato>(entity =>
             {
                 entity.ToTable("contatos", "agenda");
 
