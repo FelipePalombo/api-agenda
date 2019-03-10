@@ -15,7 +15,7 @@ namespace api_agenda.Models
 
         public string pegarTudo(){
             var retorno = from contato in _Context.Contato select contato;
-            return JsonConvert.SerializeObject(retorno);;
+            return JsonConvert.SerializeObject(retorno);
         }
     }
 }

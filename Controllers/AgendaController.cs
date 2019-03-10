@@ -3,18 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using api_agenda.Models;
+using Newtonsoft.Json;
 
 namespace api_agenda.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
-    {
+    public class AgendaController : ControllerBase
+    {   
+        private readonly ContatoService _service;
+        public AgendaController(ContatoService _Service)
+        {
+            _service = _Service;
+        }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public string Get()
         {
-            return new string[] { "value1", "value2" };
+            var contatos = _service.pegarTudo();            
+            return contatos;
         }
 
         // GET api/values/5
