@@ -17,7 +17,7 @@ namespace api_agenda.Controllers
         {
             _service = _Service;
         }
-        // GET api/values
+        // GET api/agenda
         [HttpGet]
         public string Get()
         {
@@ -25,11 +25,13 @@ namespace api_agenda.Controllers
             return contatos;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        // GET api/agenda/5
+        [HttpGet]
+        [Route("Name")]        
+        public string Name(int id)
         {
-            return "value";
+            var contatoNome = _service.pegarNomePorId(id);
+            return contatoNome + " 'Teste' " + id;
         }
 
         // POST api/values

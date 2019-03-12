@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using api_agenda.Models;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace api_agenda
 {
@@ -26,6 +28,7 @@ namespace api_agenda
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AgendaContext>(options => options.UseMySQL(Configuration.GetValue<string>("ConnectionString")));
             services.AddTransient<ContatoService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

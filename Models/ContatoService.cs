@@ -17,5 +17,11 @@ namespace api_agenda.Models
             var retorno = from contato in _Context.Contato select contato;
             return JsonConvert.SerializeObject(retorno);
         }
+
+        public string pegarNomePorId(int id){
+            var idRecebido = id;
+            var retorno = _Context.Contato.Where(contato => contato.Id == idRecebido).Select(ct => ct.Nome);
+            return JsonConvert.SerializeObject(retorno);
+        }
     }
 }
